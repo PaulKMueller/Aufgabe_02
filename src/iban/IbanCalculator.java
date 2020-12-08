@@ -5,10 +5,16 @@ import java.math.BigInteger;
 /**
  * This class calculates the IBAN based on country code, account number and bank number
  * @author Paul
- * @version jdk-11.0.2
+ * @version 1.0
  */
 
 public class IbanCalculator {
+
+    private static final int NINE = 9;
+    private static final int ASCII_TRANSFORMER = 64;
+    private static final int CHECK_DIGIT_MINUEND_VALUE = 98;
+    private static final int CHECK_DIGIT_MODULO_VALUE = 97;
+
 
     /**
      * Initialising the variables in the arguments (countryCode, bankNumber and accountNumber)
@@ -56,15 +62,13 @@ public class IbanCalculator {
     public static String countryCodeToCheckNumber(String bankAndAccount, String code) {
         char firstLetter = code.toCharArray()[0];
         char secondLetter = code.toCharArray()[1];
-        int asciiTransformer = 64;
-        BigInteger moduloTransformer = BigInteger.valueOf(97);
-        int nintyEight = 98;
-        String firstNumber = String.valueOf(firstLetter - asciiTransformer + 9);
-        String secondNumber = String.valueOf(secondLetter - asciiTransformer + 9);
+        BigInteger moduloTransformer = BigInteger.valueOf(IbanCalculator.CHECK_DIGIT_MODULO_VALUE);
+        String firstNumber = String.valueOf(firstLetter - IbanCalculator.ASCII_TRANSFORMER + IbanCalculator.NINE);
+        String secondNumber = String.valueOf(secondLetter - IbanCalculator.ASCII_TRANSFORMER + IbanCalculator.NINE);
         String result = bankAndAccount + firstNumber + secondNumber + "00";
 
         int newResult = new BigInteger(result).mod(moduloTransformer).intValue();
-        newResult = nintyEight - newResult;
+        newResult = IbanCalculator.CHECK_DIGIT_MINUEND_VALUE - newResult;
         String finalResult;
         if (newResult < 10) {
             finalResult = "0" + newResult;
@@ -87,7 +91,7 @@ public class IbanCalculator {
     public static String makeIban(String countryCode, String checkNumber, String bankNumber, String accountNumber) {
         String iban = countryCode + checkNumber + bankNumber + accountNumber;
         char[] ibanArray = iban.toCharArray();
-        StringBuilder result = new StringBuilder(22);
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < ibanArray.length; i++) {
             switch(i) {
                 case 3:
