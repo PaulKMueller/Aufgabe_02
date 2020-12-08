@@ -1,4 +1,4 @@
-package zwei.odellierung;
+package zwei.modellierung;
 
 public class Dauer {
 	private int minuten;

@@ -1,4 +1,4 @@
-package zwei.odellierung;
+package zwei.modellierung;
 
 import java.sql.Date;
 
