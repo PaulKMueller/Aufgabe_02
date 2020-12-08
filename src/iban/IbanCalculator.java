@@ -22,11 +22,9 @@ public class IbanCalculator {
         BigInteger accountNumber = new BigInteger(args[2]);
 
         String newBankNumber = bankNumber.toString();
-        System.out.println(newBankNumber);
         String newAccountNumber = toTenDigits(accountNumber);
-        System.out.println(newAccountNumber);
 
-        String lastIbanPart = bankNumber.toString() + newAccountNumber;
+        String lastIbanPart = newBankNumber + newAccountNumber;
         String checkNumber = countryCodeToCheckNumber(lastIbanPart, countryCode);
         String iban = makeIban(countryCode, checkNumber, newBankNumber, newAccountNumber);
         System.out.println(iban);
