@@ -67,9 +67,9 @@ public class IbanCalculator {
 
         int newResult = new BigInteger(result).mod(moduloTransformer).intValue();
         newResult = nintyEight - newResult;
-        String finalResult = "";
+        String finalResult;
         if (newResult < 10) {
-            finalResult = "0" + String.valueOf(newResult);
+            finalResult = "0" + newResult;
         } else {
             finalResult = String.valueOf(newResult);
         }
