@@ -1,62 +1,86 @@
-package modellierung;
-
-import java.sql.Date;
+/**
+ * This class stores all information needed to describe an album.
+ * @author Thomas Marwitz
+ * @version 1.0
+ */
 
 public class Album {
+    private String title;
+    private Artist interpreter;
+    private Date firstPublished;
+    private Label publisher;
+    private int totalSongAmount;
+    private Genre genre;
 
-	private String titel;
-	private String interpret;
-	private Label label;
-	private Date datum;
+    public enum Genre {
+        ROCK,
+        POP,
+        PUNK,
+        HIP_HOP,
+        GERMAN_POP_SONGS, // "Schlager"
+        JAZZ,
+        BLUES,
+        CLASSICAL_MUSIC,
+        REGGAE,
+    }
 
-	public void setTitel(String titel) {
-		this.titel = titel;
-	}
+    public Album(String title, Artist interpreter,
+                 Date firstPublished, Label publisher,
+                 Duration totalDuration, int totalSongAmount, Genre genre) {
+        this.setTitle(title);
+        this.setInterpreter(interpreter);
+        this.setFirstPublished(firstPublished);
+        this.setPublisher(publisher);
+        this.setTotalSongAmount(totalSongAmount);
+        this.setGenre(genre);
+    }
 
-	public void setInterpret(String interpret) {
-		this.interpret = interpret;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setLabel(Label label) {
-		this.label = label;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setDatum(Date datum) {
-		this.datum = datum;
-	}
+    public Artist getInterpreter() {
+        return interpreter;
+    }
 
-	public void setLiederzahl(int liederzahl) {
-		this.liederzahl = liederzahl;
-	}
+    public void setInterpreter(Artist interpreter) {
+        this.interpreter = interpreter;
+    }
 
-	public String getTitel() {
-		return titel;
-	}
+    public Date getFirstPublished() {
+        return firstPublished;
+    }
 
-	public String getInterpret() {
-		return interpret;
-	}
+    public void setFirstPublished(Date firstPublished) {
+        this.firstPublished = firstPublished;
+    }
 
-	public Label getLabel() {
-		return label;
-	}
+    public Label getPublisher() {
+        return publisher;
+    }
 
-	public Date getDatum() {
-		return datum;
-	}
+    public void setPublisher(Label publisher) {
+        this.publisher = publisher;
+    }
 
-	public int getLiederzahl() {
-		return liederzahl;
-	}
+    public int getTotalSongAmount() {
+        return totalSongAmount;
+    }
 
-	private int liederzahl;
+    public void setTotalSongAmount(int totalSongAmount) {
+        this.totalSongAmount = totalSongAmount;
+    }
 
-	public Album(String titel, String interpret, Label label, Date datum, int liederzahl){
-		this.titel = titel;
-		this.interpret = interpret;
-		this.label = label;
-		this.datum = datum;
-		this.liederzahl = liederzahl;
-	}
-	
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
 }

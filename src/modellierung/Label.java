@@ -1,40 +1,41 @@
-package modellierung;
-
-import java.sql.Date;
+/**
+ * This class contains the important data to describe a music label.
+ * @author Thomas Marwitz
+ * @version 1.0
+ */
 
 public class Label {
+    private String labelName;
+    private Address labelAddress;
+    private Date dateOfFoundation;
 
-	private String name;
-	private Anschrift anschrift;
-	private Date gruendungsdatum;
+    public Label(String labelName, Address labelAddress, Date dateOfFoundation) {
+        this.setLabelName(labelName);
+        this.setLabelAddress(labelAddress);
+        this.setDateOfFoundation(dateOfFoundation);
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getLabelName() {
+        return labelName;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setLabelName(String labelName) {
+        this.labelName = labelName;
+    }
 
-	public Anschrift getAnschrift() {
-		return anschrift;
-	}
+    public Address getLabelAddress() {
+        return labelAddress;
+    }
 
-	public void setAnschrift(Anschrift anschrift) {
-		this.anschrift = anschrift;
-	}
+    public void setLabelAddress(Address labelAddress) {
+        this.labelAddress = labelAddress;
+    }
 
-	public Date getGruendungsdatum() {
-		return gruendungsdatum;
-	}
+    public Date getDateOfFoundation() {
+        return dateOfFoundation;
+    }
 
-	public void setGruendungsdatum(Date gruendungsdatum) {
-		this.gruendungsdatum = gruendungsdatum;
-	}
-
-	public Label(String name, Anschrift anschrift, Date gruendungsdatum){
-		this.name = name;
-		this.anschrift = anschrift;
-		this.gruendungsdatum = gruendungsdatum;
-	}
+    public void setDateOfFoundation(Date dateOfFoundation) {
+        this.dateOfFoundation = dateOfFoundation;
+    }
 }
